@@ -4,6 +4,7 @@ namespace Yii\Modules\Comments;
 
 use Yii;
 use yii\base\Application;
+use yii\base\BootstrapInterface;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -12,7 +13,7 @@ use yii\helpers\ArrayHelper;
  * @author Petar Ivanov
  * @version 1.0.0
  */
-class Module extends \yii\base\Module
+class Module extends \yii\base\Module implements BootstrapInterface
 {
 
     public function init()
