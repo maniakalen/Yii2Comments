@@ -43,7 +43,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             }
         }
         if ($app instanceof \yii\console\Application) {
-            $this->controllerNamespace = 'Yii\Modules\Comments\Console\Controllers';
+            $this->controllerNamespace = 'comments\Console\Controllers';
         }
     }
 }
