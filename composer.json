@@ -1,0 +1,22 @@
+{
+  "name": "yii2/comments",
+  "description": "Comments module for Yii2",
+  "keywords": [
+    "PHP"
+  ],
+  "type": "library",
+  "authors": [
+    {
+      "name": "Petar Ivanov"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3",
+    "yiisoft/yii2" : ">=2.0.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Yii\\Modules\\Comments\\": "src/Comments"
+    }
+  }
+}
