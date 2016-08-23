@@ -21,7 +21,7 @@ class Module extends \yii\base\Module
 
         Yii::setAlias('@comments', realpath(dirname(__FILE__)));
 
-        \Yii::configure(
+        Yii::configure(
             $this,
             ArrayHelper::merge(
                 include \Yii::getAlias('@comments/Config/main.php'),
