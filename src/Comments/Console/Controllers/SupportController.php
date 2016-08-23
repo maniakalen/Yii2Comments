@@ -1,6 +1,6 @@
 <?php
 
-namespace Yii\Modules\Comments\Console\Controllers;
+namespace Comments\Console\Controllers;
 
 /**
  * Class SupportController

@@ -1,6 +1,6 @@
 <?php
 
-namespace Yii\Modules\Comments;
+namespace Comments;
 
 use Yii;
 use yii\base\Application;

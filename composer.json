@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Yii\\Modules\\Comments\\": "src/Comments"
+      "Comments\\": "src/Comments"
     }
   }
 }
