@@ -20,13 +20,13 @@ class Module extends \yii\base\Module implements BootstrapInterface
     {
         parent::init();
 
-        Yii::setAlias('@comments', realpath(dirname(__FILE__)));
+        Yii::setAlias('@Comments', realpath(dirname(__FILE__)));
 
         Yii::configure(
             $this,
             ArrayHelper::merge(
-                include \Yii::getAlias('@comments/Config/main.php'),
-                include \Yii::getAlias('@comments/Config/components.php')
+                include \Yii::getAlias('@Comments/Config/main.php'),
+                include \Yii::getAlias('@Comments/Config/components.php')
             )
         );
     }
@@ -43,7 +43,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             }
         }
         if ($app instanceof \yii\console\Application) {
-            $this->controllerNamespace = 'comments\Console\Controllers';
+            $this->controllerNamespace = 'Comments\Console\Controllers';
         }
     }
 }

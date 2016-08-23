@@ -2,6 +2,6 @@
 
 return [
     'aliases' => [
-        '@Yii\Modules\Comments' => '@comments'
+        '@Yii\Modules\Comments' => '@Comments'
     ]
 ];
