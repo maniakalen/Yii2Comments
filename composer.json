@@ -10,7 +10,7 @@
       "name": "Petar Ivanov"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "dev-master",
   "require": {
     "php": ">=5.3.3",
     "yiisoft/yii2" : ">=2.0.6"
