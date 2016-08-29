@@ -1,6 +1,6 @@
 <?php
 /** $Id: - $ */
-
+namespace Comments\Widgets;
 /**
  * ---------  Begin Version Control Data----------------------------------------
  * $LastChangedDate: - $
