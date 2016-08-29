@@ -13,6 +13,6 @@ class CommentsWidget extends \yii\base\Widget
 {
     public function run()
     {
-
+        return $this->render('@comments/resources/views/comments');
     }
 }
