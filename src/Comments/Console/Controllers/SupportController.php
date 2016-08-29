@@ -29,10 +29,12 @@ class SupportController extends Controller
             if (!$table) {
                 $path = \Yii::getAlias('@commentsSql/create.sql');
                 if (file_exists($path)) {
-                    $pwd = \Yii::$app->getDb()->password;
-                    $usr = \Yii::$app->getDb()->username;
-                    exec(escapeshellcmd("mysql -u$usr -p$pwd $schema < $path"));
-                    $this->stdout("Table created successfully");
+                    $sql = file_get_contents($path);
+                    if (\Yii::$app->getDb()->createCommand($sql)->execute()) {
+                        $this->stdout("Table created successfully");
+                    } else {
+                        $this->stderr("Failed to create table");
+                    }
                 } else {
                     $this->stderr("Unable to find file in $path");
                 }
