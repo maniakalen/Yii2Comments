@@ -14,7 +14,7 @@ use yii\web\AssetBundle;
 
 class CommentsAsset extends AssetBundle
 {
-    public $basePath = '@comments/resources';
+    public $sourcePath = '@Comments/resources';
     public $baseUrl = '@web';
     public $css = [];
     public $js = [

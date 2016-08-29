@@ -15,7 +15,7 @@ use yii\helpers\ArrayHelper;
  */
 class Module extends \yii\base\Module implements BootstrapInterface
 {
-
+    public $urlRules;
     public function init()
     {
         parent::init();
