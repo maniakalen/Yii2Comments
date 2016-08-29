@@ -19,9 +19,5 @@
     "psr-4": {
       "Comments\\": "src/Comments"
     }
-  },
-  "scripts": {
-    "post-update-cmd" : "Comments\\Console\\Controllers\\SupportController::actionInit",
-    "post-install-cmd" : "Comments\\Console\\Controllers\\SupportController::actionInit"
   }
 }
