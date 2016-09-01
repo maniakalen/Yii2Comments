@@ -63,8 +63,8 @@ class Module extends \yii\base\Module implements BootstrapInterface
     public function bootstrap($app)
     {
         if ($app instanceof \yii\web\Application) {
+            $this->controllerNamespace = 'Comments\Frontend\Controllers';
             if (is_array($this->urlRules) && !empty($this->urlRules)) {
-                $this->controllerNamespace = 'Comments\Frontend\Controllers';
                 $app->getUrlManager()->addRules($this->urlRules);
             }
         }
