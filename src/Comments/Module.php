@@ -5,6 +5,7 @@ namespace Comments;
 use Yii;
 use yii\base\Application;
 use yii\base\BootstrapInterface;
+use yii\base\Component;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -16,6 +17,7 @@ use yii\helpers\ArrayHelper;
 class Module extends \yii\base\Module implements BootstrapInterface
 {
     public $urlRules;
+    public $configs;
     public function init()
     {
         parent::init();
@@ -35,6 +37,23 @@ class Module extends \yii\base\Module implements BootstrapInterface
             'sourceLanguage' => Yii::$app->sourceLanguage,
             'basePath' => '@Comments/resources/messages',
         ];
+
+        if (!empty($this->configs)) {
+            foreach ($this->configs as $component => $config) {
+                $component = Yii::$app->get($component);
+                if ($component instanceof Component) {
+                    if (is_array($config)) {
+                        foreach ($config as $param => $values) {
+                            if (is_array($values)) {
+                                $component->$param = ArrayHelper::merge($component->$param, $values);
+                            } else {
+                                $component->$param = $values;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     /**
      * Bootstrap method to be called during application bootstrap stage.

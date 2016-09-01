@@ -14,7 +14,7 @@ namespace Comments\Frontend\Controllers;
 
 use yii\web\Controller;
 
-class CommentsController extends Controller
+class ApiController extends Controller
 {
     public function actions()
     {
