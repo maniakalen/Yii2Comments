@@ -16,13 +16,5 @@ use yii\rest\ActiveController;
 
 class ApiController extends ActiveController
 {
-    public function actions()
-    {
-        return [
-            'index' => [
-                'class' => 'yii\rest\IndexAction',
-                'modelClass' => 'Comments\Common\Models\Comments',
-            ],
-        ];
-    }
+    public $modelClass = 'Comments\Common\Models\Comments';
 }
