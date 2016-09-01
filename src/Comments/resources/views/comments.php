@@ -17,3 +17,6 @@
         </div>
     </div>
 </div>
+<script id="handlebars-comments" type="text/x-handlebars-template">
+<?=$this->render('template')?>
+</script>
