@@ -30,10 +30,11 @@ class SupportController extends Controller
                 $path = \Yii::getAlias('@commentsSql/create.sql');
                 if (file_exists($path)) {
                     $sql = file_get_contents($path);
-                    if (\Yii::$app->getDb()->createCommand($sql)->execute()) {
+                    try {
+                        \Yii::$app->getDb()->createCommand($sql)->execute();
                         $this->stdout("Table created successfully");
-                    } else {
-                        $this->stderr("Failed to create table");
+                    } catch (\Exception $e) {
+                        $this->stderr("Failed to initialize module");
                     }
                 } else {
                     $this->stderr("Unable to find file in $path");

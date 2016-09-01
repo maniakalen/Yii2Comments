@@ -19,6 +19,13 @@ class CommentsAsset extends AssetBundle
     public $css = [];
     public $js = [
         'js/handlebars.js',
+        'js/init.js',
+        [
+            'src' => 'js/comments.handlebars',
+            'type' => 'text/x-handlebars-template',
+            'id' => 'handlebars-comments'
+        ],
+
     ];
     public $depends = [
         'yii\bootstrap\BootstrapAsset',

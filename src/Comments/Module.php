@@ -29,6 +29,12 @@ class Module extends \yii\base\Module implements BootstrapInterface
                 include \Yii::getAlias('@Comments/Config/components.php')
             )
         );
+
+        Yii::$app->getI18n()->translations['comments'] = [
+            'class' => 'yii\i18n\PhpMessageSource',
+            'sourceLanguage' => Yii::$app->sourceLanguage,
+            'basePath' => '@Comments/resources/messages',
+        ];
     }
     /**
      * Bootstrap method to be called during application bootstrap stage.
