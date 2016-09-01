@@ -7,6 +7,10 @@ $(document).ready(function() {
         var id = $(this).data('commentsId');
         var url = '/comments/list/' + table + '/' + id + '.html';
         $.ajax({
+            dataType: 'json',
+            accepts: {
+                text: "application/json"
+            },
             "method": "GET",
             "url": url
         }).done(function(data) {
