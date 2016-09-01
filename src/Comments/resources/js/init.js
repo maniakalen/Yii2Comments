@@ -14,7 +14,20 @@ $(document).ready(function() {
             "method": "GET",
             "url": url
         }).done(function(data) {
-            console.debug(data);
-        });
+            if (data.length) {
+                var template = compileTemplate('script#handlebars-comments');
+                $(this).html(template(data));
+            }
+        }.bind(this));
     });
 });
+var compileTemplate = function(selector) {
+    if (typeof window.templates == 'undefined') {
+        window.templates = {};
+    }
+    if (typeof window.templates[selector] == 'undefined') {
+        var source = $(selector).html();
+        window.templates[selector] = Handlebars.compile(source);
+    }
+    return window.templates[selector];
+};
