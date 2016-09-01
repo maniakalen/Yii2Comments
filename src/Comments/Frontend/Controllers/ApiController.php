@@ -29,7 +29,7 @@ class ApiController extends ActiveController
                     $userEntity = \Yii::$app->user->identity;
                     return new ActiveDataProvider([
                         'query' => $modelClass::find()
-                            ->select(['author' => 'u.name', 'date' => 'created_at', 'text' => 'content'])
+                            ->select(['author' => 'u.name', 'date' => $modelClass::tableName().'.created_at', 'text' => 'content'])
                             ->leftJoin(['u' => $userEntity::tableName()], $modelClass::tableName() . '.user_id = u.id'),
                     ]);
                 }
