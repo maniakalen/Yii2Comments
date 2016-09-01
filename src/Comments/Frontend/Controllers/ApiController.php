@@ -12,9 +12,9 @@
 namespace Comments\Frontend\Controllers;
 
 
-use yii\web\Controller;
+use yii\rest\ActiveController;
 
-class ApiController extends Controller
+class ApiController extends ActiveController
 {
     public function actions()
     {
