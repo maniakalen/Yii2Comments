@@ -55,4 +55,18 @@ class Comments extends \yii\db\ActiveRecord
             'content' => 'Content',
         ];
     }
+
+    public function toArray(array $fields = [], array $expand = [], $recursive = true)
+    {
+        $userIdentity = \Yii::$app->user->identity;
+        $data = [];
+        if (!$this->author && !$this->date && !$this->text) {
+            $data = [
+                'author' => $userIdentity::findOne($this->user_id)->name,
+                'date' => \Yii::$app->formatter->asDatetime($this->created_at),
+                'text' => $this->content
+            ];
+        }
+        return ArrayHelper::merge(parent::toArray($fields, $expand, $recursive), $data);
+    }
 }

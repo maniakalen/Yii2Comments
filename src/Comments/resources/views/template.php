@@ -22,7 +22,8 @@
     <div class="form-group">
     <textarea></textarea>
     </div>
-    <button name="comment_save" id="comment_save" class="btn btn-primary" type="button" data-submit-url="/comments/add/<?=$table?>/<?=$id?>.html">
+    <button name="comment_save" id="comment_save" class="btn btn-primary"
+            type="button" data-submit-url="/comments/add.html">
         <i class="glyphicon glyphicon-ok-sign"></i><?=Yii::t('comments', 'Submit comment')?>
     </button>
 </div>

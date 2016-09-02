@@ -22,6 +22,9 @@ $(document).ready(function() {
     });
     $('body').on('click', 'button#comment_save', function() {
         var url = $(this).data('submitUrl');
+        var container = $(this).closest('div.handlebars-comments-container');
+        var table = container.data('commentsTable');
+        var id = container.data('commentsId');
         $.ajax({
             dataType: 'json',
             accepts: {
@@ -29,7 +32,11 @@ $(document).ready(function() {
             },
             "method": "POST",
             "url": url,
-            'data' : {content: $(this).parent().find('textarea').val()}
+            'data' : {
+                content: $(this).parent().find('textarea').val(),
+                table_relation: table,
+                table_relation_id: id,
+            }
         }).done(function(data) {
             console.debug(data);
         });
