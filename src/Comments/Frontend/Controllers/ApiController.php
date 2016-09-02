@@ -19,6 +19,14 @@ use yii\rest\ActiveController;
 class ApiController extends ActiveController
 {
     public $modelClass = 'Comments\Common\Models\Comments';
+    public function beforeAction($action)
+    {
+        $params = \Yii::$app->getRequest()->getBodyParams();
+        $params['user_id'] = \Yii::$app->user->id;
+        \Yii::$app->getRequest()->setBodyParams($params);
+        return parent::beforeAction($action);
+    }
+
     public function actions()
     {
         return ArrayHelper::merge(parent::actions(), [
