@@ -1,6 +1,7 @@
 <?php
 
 namespace Comments\Common\Models;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "comments".
@@ -14,6 +15,9 @@ namespace Comments\Common\Models;
  */
 class Comments extends \yii\db\ActiveRecord
 {
+    public $author;
+    public $date;
+    public $text;
     /**
      * @inheritdoc
      */
@@ -30,10 +34,13 @@ class Comments extends \yii\db\ActiveRecord
         return [
             [['table_relation', 'content'], 'string'],
             [['table_relation_id', 'user_id'], 'integer'],
-            [['created_at'], 'safe'],
+            [['created_at', 'author', 'date','text'], 'safe'],
         ];
     }
-
+    public function fields()
+    {
+        return ArrayHelper::merge(parent::extraFields(), ['author' => 'author', 'date' => 'date', 'text' => 'text']);
+    }
     /**
      * @inheritdoc
      */
