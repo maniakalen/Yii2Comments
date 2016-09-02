@@ -19,7 +19,8 @@
 </div>
 {{/each}}
 <div>
-    <button name="comment_save" class="btn btn-primary" type="submit">
+    <textarea cols="8" rows="5"></textarea>
+    <button name="comment_save" id="comment_save" class="btn btn-primary" type="submit" data-submit-url="/comments/add/<?=$table?>/<?=$id?>.html">
         <i class="glyphicon glyphicon-ok-sign"></i><?=Yii::t('comments', 'Submit comment')?>
     </button>
 </div>

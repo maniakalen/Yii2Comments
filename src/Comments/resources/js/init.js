@@ -20,6 +20,20 @@ $(document).ready(function() {
             }
         }.bind(this));
     });
+    $('body').on('click', 'button#comment_save', function() {
+        var url = $(this).data('submitUrl');
+        $.ajax({
+            dataType: 'json',
+            accepts: {
+                text: "application/json"
+            },
+            "method": "POST",
+            "url": url,
+            'data' : {content: $(this).parent().find('textarea').val()}
+        }).done(function(data) {
+            console.debug(data);
+        });
+    });
 });
 var compileTemplate = function(selector) {
     if (typeof window.templates == 'undefined') {
