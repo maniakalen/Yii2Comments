@@ -33,6 +33,7 @@ $(document).ready(function() {
         }).done(function(data) {
             console.debug(data);
         });
+        return false;
     });
 });
 var compileTemplate = function(selector) {

@@ -16,7 +16,9 @@ class CommentsAsset extends AssetBundle
 {
     public $sourcePath = '@Comments/resources';
     public $baseUrl = '@web';
-    public $css = [];
+    public $css = [
+        'css/comments.css',
+    ];
     public $js = [
         'js/handlebars.js',
         'js/init.js',
