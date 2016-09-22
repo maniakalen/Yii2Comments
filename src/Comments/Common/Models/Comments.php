@@ -32,8 +32,8 @@ class Comments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['table_relation', 'content'], 'string'],
-            [['table_relation_id', 'user_id'], 'integer'],
+            [['table_relation', 'content', 'table_relation_id',], 'string'],
+            [['user_id'], 'integer'],
             [['created_at', 'author', 'date','text'], 'safe'],
         ];
     }

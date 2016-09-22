@@ -1,7 +1,7 @@
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `table_relation` enum('') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `table_relation_id` int(11) DEFAULT NULL,
+  `table_relation_id` VARCHAR(65) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `content` text COLLATE utf8_unicode_ci,
