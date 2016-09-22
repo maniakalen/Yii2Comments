@@ -16,6 +16,7 @@ $(document).ready(function() {
         }).done(function(data) {
             if (data.length) {
                 var template = compileTemplate('script#handlebars-comments');
+                $(this).data('handlebarsTemplate', template);
                 $(this).html(template(data));
             }
         }.bind(this));
@@ -38,7 +39,11 @@ $(document).ready(function() {
                 table_relation_id: id,
             }
         }).done(function(data) {
-            console.debug(data);
+            var container = $(this).closest('div.handlebars-comments-container');
+            var template = container.data('handlebarsTemplate');
+            if (typeof template != 'undefined') {
+                container.append(template(data));
+            }
         });
         return false;
     });
