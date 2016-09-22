@@ -2,8 +2,8 @@
 
 return [
     'urlRules' => [
-        'comments/list/<table>/<id>' => 'comments/api/index',
-        'comments/add' => 'comments/api/create',
+        'c/comments/list/<table>/<id>' => 'comments/api/index',
+        'c/comments/add' => 'comments/api/create',
     ],
     'aliases' => [
         '@Yii\Modules\Comments' => '@Comments',

@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('div.handlebars-comments-container').each(function() {
         var table = $(this).data('commentsTable');
         var id = $(this).data('commentsId');
-        var url = '/comments/list/' + table + '/' + id + '.html';
+        var url = '/c/comments/list/' + table + '/' + id + '.html';
         $.ajax({
             dataType: 'json',
             accepts: {
