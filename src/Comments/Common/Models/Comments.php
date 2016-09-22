@@ -59,6 +59,9 @@ class Comments extends \yii\db\ActiveRecord
     public function toArray(array $fields = [], array $expand = [], $recursive = true)
     {
         $userIdentity = \Yii::$app->user->identity;
+        if (!$this->created_at || !$this->id) {
+            $this->refresh();
+        }
         $data = [];
         if (!$this->author && !$this->date && !$this->text) {
             $data = [
@@ -66,7 +69,10 @@ class Comments extends \yii\db\ActiveRecord
                 'date' => \Yii::$app->formatter->asDatetime($this->created_at),
                 'text' => $this->content
             ];
+        } else {
+            $this->date = \Yii::$app->formatter->asDatetime($this->date);
         }
+
         return ArrayHelper::merge(parent::toArray($fields, $expand, $recursive), $data);
     }
 }
