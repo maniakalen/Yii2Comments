@@ -45,7 +45,7 @@ $(document).ready(function() {
             var container = $(this).closest('div.handlebars-comments-container');
             var template = container.data('handlebarsTemplate');
             if (typeof template != 'undefined') {
-                $('div.comments-container', container).append(template([data]));
+                $('div.comments-container', container).prepend(template([data]));
             }
         }.bind(this));
         return false;
