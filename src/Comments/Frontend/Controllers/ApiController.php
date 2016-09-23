@@ -38,7 +38,8 @@ class ApiController extends ActiveController
                     return new ActiveDataProvider([
                         'query' => $modelClass::find()
                             ->select(['author' => 'u.name', 'date' => $modelClass::tableName().'.created_at', 'text' => 'content'])
-                            ->leftJoin(['u' => $userEntity::tableName()], $modelClass::tableName() . '.user_id = u.id'),
+                            ->leftJoin(['u' => $userEntity::tableName()], $modelClass::tableName() . '.user_id = u.id')
+                            ->orderBy([$modelClass::tableName().'.created_at' => SORT_DESC]),
                     ]);
                 }
             ]
