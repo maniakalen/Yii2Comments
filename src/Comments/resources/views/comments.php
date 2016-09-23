@@ -20,3 +20,6 @@
 <script id="handlebars-comments" type="text/x-handlebars-template">
 <?=$this->render('template', ['table' => $table, 'id' => $id])?>
 </script>
+<script id="handlebars-comments-form" type="text/x-handlebars-template">
+    <?=$this->render('form')?>
+</script>

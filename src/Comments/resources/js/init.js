@@ -17,7 +17,10 @@ $(document).ready(function() {
             if (data.length) {
                 var template = compileTemplate('script#handlebars-comments');
                 $(this).data('handlebarsTemplate', template);
-                $(this).html(template(data));
+                var comments = $('<div/>').addClass('comments-container');
+                comments.html(template(data));
+                $(this).html(comments);
+                $(this).append(compileTemplate('script#handlebars-comments-form')([]));
             }
         }.bind(this));
     });
@@ -42,9 +45,9 @@ $(document).ready(function() {
             var container = $(this).closest('div.handlebars-comments-container');
             var template = container.data('handlebarsTemplate');
             if (typeof template != 'undefined') {
-                container.append(template(data));
+                container.append(template([data]));
             }
-        });
+        }.bind(this));
         return false;
     });
 });
