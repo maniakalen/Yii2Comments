@@ -19,6 +19,7 @@ use yii\rest\ActiveController;
 class ApiController extends ActiveController
 {
     public $modelClass = 'Comments\Common\Models\Comments';
+    public $pagination = ['pageSize' => 20];
     public function beforeAction($action)
     {
         $params = \Yii::$app->getRequest()->getBodyParams();
@@ -45,7 +46,8 @@ class ApiController extends ActiveController
                         $query->orderBy($order);
                     }
                     return new ActiveDataProvider([
-                        'query' => $query
+                        'query' => $query,
+                        'pagination' => $this->pagination,
                     ]);
                 }
             ]
