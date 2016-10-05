@@ -18,6 +18,8 @@ class Comments extends \yii\db\ActiveRecord
     public $author;
     public $date;
     public $text;
+
+    public $defaultOrder;
     /**
      * @inheritdoc
      */
@@ -26,6 +28,13 @@ class Comments extends \yii\db\ActiveRecord
         return 'comments';
     }
 
+    public function init()
+    {
+        parent::init();
+        if (!$this->defaultOrder) {
+            $this->defaultOrder = [static::tableName() . '.created_at' => SORT_DESC];
+        }
+    }
     /**
      * @inheritdoc
      */

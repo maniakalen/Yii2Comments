@@ -35,11 +35,17 @@ class ApiController extends ActiveController
                     /* @var $modelClass \yii\db\BaseActiveRecord */
                     $modelClass = $this->modelClass;
                     $userEntity = \Yii::$app->user->identity;
+
+                    $model = \Yii::createObject($modelClass);
+                    $order = isset($model->defaultOrder)?$model->defaultOrder:null;
+                    $query = $modelClass::find()
+                        ->select(['author' => 'u.name', 'date' => $modelClass::tableName().'.created_at', 'text' => 'content'])
+                        ->leftJoin(['u' => $userEntity::tableName()], $modelClass::tableName() . '.user_id = u.id');
+                    if ($order) {
+                        $query->orderBy($order);
+                    }
                     return new ActiveDataProvider([
-                        'query' => $modelClass::find()
-                            ->select(['author' => 'u.name', 'date' => $modelClass::tableName().'.created_at', 'text' => 'content'])
-                            ->leftJoin(['u' => $userEntity::tableName()], $modelClass::tableName() . '.user_id = u.id')
-                            ->orderBy([$modelClass::tableName().'.created_at' => SORT_DESC]),
+                        'query' => $query
                     ]);
                 }
             ]
