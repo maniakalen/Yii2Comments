@@ -18,6 +18,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
 {
     public $urlRules;
     public $configs;
+    public $di;
     public function init()
     {
         parent::init();
@@ -37,7 +38,16 @@ class Module extends \yii\base\Module implements BootstrapInterface
             'sourceLanguage' => Yii::$app->sourceLanguage,
             'basePath' => '@Comments/resources/messages',
         ];
-
+        if (!empty($this->di)) {
+            foreach ($this->di as $class => $definition) {
+                $params = [];
+                if (isset($definition['params'])) {
+                    $params = $definition['params'];
+                    unset($definition['params']);
+                }
+                \Yii::$container->set($class, $definition, $params);
+            }
+        }
         if (!empty($this->configs)) {
             foreach ($this->configs as $component => $config) {
                 $component = Yii::$app->get($component);
