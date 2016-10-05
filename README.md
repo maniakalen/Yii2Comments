@@ -5,7 +5,7 @@ Still in development
 The module needs bootstrapping, so we have to add it to the bootstrap list of the configuration.
 
 Supported configuration params for sorting the results and for defining page size when defining the module:
-
+<pre>
   'comments' => [
             'class' => '\Comments\Module',
             'di' => [
@@ -19,3 +19,4 @@ Supported configuration params for sorting the results and for defining page siz
                 ]
             ]
         ]
+</pre>
