@@ -45,15 +45,20 @@ $(document).ready(function() {
                 table_relation_id: id,
             }
         }).done(function(data) {
-            if (typeof yii.comments.order != 'undefined' || yii.comments.order == 4) {
+            var order_asc = typeof yii.comments.order == 'undefined' || yii.comments.order == 4;
+            if (order_asc) {
                 yii.comments.data.push(data);
             } else {
                 yii.comments.data.unshift(data);
             }
+            var items = yii.comments.data;
+            if (typeof yii.comments.pageSize == 'number' && yii.comments.pageSize > 0) {
+                items = order_asc?items.slice(-yii.comments.pageSize):items.slice(0,yii.comments.pageSize);
+            }
             var container = $(this).closest('div.handlebars-comments-container');
             var template = container.data('handlebarsTemplate');
             if (typeof template != 'undefined') {
-                $('div.comments-container', container).html(template(yii.comments.data));
+                $('div.comments-container', container).html(template(items));
             }
         }.bind(this));
         return false;

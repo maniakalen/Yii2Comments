@@ -3,6 +3,7 @@
 namespace Comments;
 
 use Comments\Common\Models\Comments;
+use Comments\Frontend\Controllers\ApiController;
 use Yii;
 use yii\base\Application;
 use yii\base\BootstrapInterface;
@@ -81,10 +82,13 @@ class Module extends \yii\base\Module implements BootstrapInterface
 
             $model = \Yii::createObject(Comments::className());
             $order = reset($model->defaultOrder);
+            $controller = \Yii::createObject(ApiController::className());
+            $pageSize = isset($controller->pagination->pageSize) ? $controller->pagination->pageSize:0;
             \Yii::$app->getView()->registerJs('
                 yii = yii || {"comments" : {}}; 
                 yii.comments = yii.comments || {"data" : []};
-                yii.comments.order = ' . $order . '
+                yii.comments.order = ' . $order . ';
+                yii.comments.pageSize = ' . $pageSize . ';
             ');
         }
         if ($app instanceof \yii\console\Application) {
