@@ -47,7 +47,7 @@ class Comments extends \yii\db\ActiveRecord
     }
     public function fields()
     {
-        return ArrayHelper::merge(parent::extraFields(), ['author' => 'author', 'text' => 'text']);
+        return ArrayHelper::merge(parent::extraFields(), ['author' => 'author','created_at' => 'created_at', 'text' => 'text']);
     }
     /**
      * @inheritdoc
