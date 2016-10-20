@@ -83,7 +83,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             $model = \Yii::createObject(Comments::className());
             $order = reset($model->defaultOrder);
             $controller = \Yii::createObject(ApiController::className(), ['comments/api', $this]);
-            $pageSize = isset($controller->pagination->pageSize) ? $controller->pagination->pageSize:0;
+            $pageSize = isset($controller->pagination['pageSize']) ? $controller->pagination['pageSize']:0;
             \Yii::$app->getView()->registerJs('
                 yii = yii || {"comments" : {}}; 
                 yii.comments = yii.comments || {"data" : []};
