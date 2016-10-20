@@ -12,6 +12,7 @@
 namespace Comments\Frontend\Controllers;
 
 
+use Comments\Common\Models\Comments;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\rest\ActiveController;
@@ -25,6 +26,11 @@ class ApiController extends ActiveController
         $params = \Yii::$app->getRequest()->getBodyParams();
         $params['user_id'] = \Yii::$app->user->id;
         \Yii::$app->getRequest()->setBodyParams($params);
+        $model = \Yii::createObject(Comments::className());
+        \Yii::$app->getView()->registerJs('
+            yii = yii || {"comments" : {}}; 
+            yii.comments = yii.comments || {"data" : [], "order" : "'. $model->defaultOrder.'"};
+        ');
         return parent::beforeAction($action);
     }
 

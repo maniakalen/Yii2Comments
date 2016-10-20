@@ -2,6 +2,8 @@
  * Created by peter.georgiev on 01/09/2016.
  */
 $(document).ready(function() {
+    window.yii = window.yii || {};
+    window.yii.comments = window.yii.comments || {"data" : [], "order" : "4"};
     $('div.handlebars-comments-container').each(function() {
         var table = $(this).data('commentsTable');
         var id = $(this).data('commentsId');
@@ -15,6 +17,7 @@ $(document).ready(function() {
             "url": url
         }).done(function(data) {
             if (data.length) {
+                yii.comments.data = data;
                 var template = compileTemplate('script#handlebars-comments');
                 $(this).data('handlebarsTemplate', template);
                 var comments = $('<div/>').addClass('comments-container');
@@ -42,10 +45,15 @@ $(document).ready(function() {
                 table_relation_id: id,
             }
         }).done(function(data) {
+            if (typeof yii.comments.order == 'undefined' || yii.comments.order == 4) {
+                yii.comments.data.push(data);
+            } else {
+                yii.comments.data.unshift(data);
+            }
             var container = $(this).closest('div.handlebars-comments-container');
             var template = container.data('handlebarsTemplate');
             if (typeof template != 'undefined') {
-                $('div.comments-container', container).prepend(template([data]));
+                $('div.comments-container', container).html(template(yii.comments.data));
             }
         }.bind(this));
         return false;
