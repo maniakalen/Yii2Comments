@@ -16,7 +16,6 @@ use yii\helpers\ArrayHelper;
 class Comments extends \yii\db\ActiveRecord
 {
     public $author;
-    public $date;
     public $text;
 
     public $defaultOrder;
@@ -72,14 +71,14 @@ class Comments extends \yii\db\ActiveRecord
             $this->refresh();
         }
         $data = [];
-        if (!$this->author && !$this->date && !$this->text) {
+        if (!$this->author && !$this->text) {
             $data = [
                 'author' => $userIdentity::findOne($this->user_id)->name,
-                'date' => \Yii::$app->formatter->asDatetime($this->created_at),
+                'created_at' => \Yii::$app->formatter->asDatetime($this->created_at),
                 'text' => $this->content
             ];
         } else {
-            $this->date = \Yii::$app->formatter->asDatetime($this->date);
+            $this->created_at = \Yii::$app->formatter->asDatetime($this->created_at);
         }
 
         return ArrayHelper::merge(parent::toArray($fields, $expand, $recursive), $data);

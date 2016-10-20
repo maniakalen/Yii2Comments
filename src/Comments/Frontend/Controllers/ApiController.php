@@ -40,7 +40,7 @@ class ApiController extends ActiveController
                     $model = \Yii::createObject($modelClass);
                     $order = isset($model->defaultOrder)?$model->defaultOrder:null;
                     $query = $modelClass::find()
-                        ->select(['author' => 'u.name', 'date' => $modelClass::tableName().'.created_at', 'text' => 'content'])
+                        ->select(['author' => 'u.name', 'created_at' => $modelClass::tableName().'.created_at', 'text' => 'content'])
                         ->leftJoin(['u' => $userEntity::tableName()], $modelClass::tableName() . '.user_id = u.id');
                     if ($order) {
                         $query->orderBy($order);

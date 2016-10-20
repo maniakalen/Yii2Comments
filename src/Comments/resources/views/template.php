@@ -11,7 +11,7 @@
 ?>
 {{#each this}}
 <div class="comment">
-    <h4>{{this.author}}<span class="date">{{this.date}}</span></h4>
+    <h4>{{this.author}}<span class="date">{{this.created_at}}</span></h4>
     <div>
         <img src="/img/quots.png" />
         <p>{{this.text}}</p>
