@@ -42,12 +42,12 @@ class Comments extends \yii\db\ActiveRecord
         return [
             [['table_relation', 'content', 'table_relation_id',], 'string'],
             [['user_id'], 'integer'],
-            [['created_at', 'author', 'date','text'], 'safe'],
+            [['created_at', 'author', 'text'], 'safe'],
         ];
     }
     public function fields()
     {
-        return ArrayHelper::merge(parent::extraFields(), ['author' => 'author', 'date' => 'date', 'text' => 'text']);
+        return ArrayHelper::merge(parent::extraFields(), ['author' => 'author', 'text' => 'text']);
     }
     /**
      * @inheritdoc
