@@ -2,6 +2,7 @@
 
 namespace Comments;
 
+use Comments\Common\Models\Comments;
 use Yii;
 use yii\base\Application;
 use yii\base\BootstrapInterface;
@@ -77,6 +78,12 @@ class Module extends \yii\base\Module implements BootstrapInterface
             if (is_array($this->urlRules) && !empty($this->urlRules)) {
                 $app->getUrlManager()->addRules($this->urlRules);
             }
+
+            $model = \Yii::createObject(Comments::className());
+            \Yii::$app->getView()->registerJs('
+                yii = yii || {"comments" : {}}; 
+                yii.comments = yii.comments || {"data" : [], "order" : '. json_encode($model->defaultOrder, JSON_BIGINT_AS_STRING | JSON_UNESCAPED_UNICODE).'};
+            ');
         }
         if ($app instanceof \yii\console\Application) {
             $this->controllerNamespace = 'Comments\Console\Controllers';
