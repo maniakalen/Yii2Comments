@@ -80,7 +80,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             }
 
             $model = \Yii::createObject(Comments::className());
-            $order = json_encode($model->defaultOrder, JSON_BIGINT_AS_STRING | JSON_UNESCAPED_UNICODE);
+            $order = reset($model->defaultOrder);
             \Yii::$app->getView()->registerJs('
                 yii = yii || {"comments" : {}}; 
                 yii.comments = yii.comments || {"data" : []};

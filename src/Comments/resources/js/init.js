@@ -45,7 +45,7 @@ $(document).ready(function() {
                 table_relation_id: id,
             }
         }).done(function(data) {
-            if (typeof yii.comments.order == 'undefined' || yii.comments.order == 4) {
+            if (typeof yii.comments.order != 'undefined' || yii.comments.order == 4) {
                 yii.comments.data.push(data);
             } else {
                 yii.comments.data.unshift(data);
