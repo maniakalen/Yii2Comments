@@ -37,7 +37,7 @@ class ApiController extends ActiveController
                     $modelClass = $this->modelClass;
                     $userEntity = \Yii::$app->user->identity;
 
-                    $model = \Yii::createObject($modelClass, ['comments/api', 'comments']);
+                    $model = \Yii::createObject($modelClass);
                     $order = isset($model->defaultOrder)?$model->defaultOrder:null;
                     $query = $modelClass::find()
                         ->select(['author' => 'u.name', 'created_at' => $modelClass::tableName().'.created_at', 'text' => 'content'])
