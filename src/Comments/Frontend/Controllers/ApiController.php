@@ -47,7 +47,7 @@ class ApiController extends ActiveController
                     }
                     return new ActiveDataProvider([
                         'query' => $query,
-                        'pagination' => $this->pagination,
+                        'pagination' => ['pageSize' => 0],
                     ]);
                 }
             ]
