@@ -73,11 +73,11 @@ $(document).ready(function() {
                         .data('commentsUpDisabled', yii.comments.isOrderAsc());
 
                     var scrollUp = $('<a/>')
-                        .html("<span class='glyphicon glyphicon-chevron-left' /> Get prev comments")
+                        .html("<span class='glyphicon glyphicon-chevron-up' />")
                         .addClass('btn btn-default up');
 
                     var scrollDown = $('<a/>')
-                        .html("<span class='glyphicon glyphicon-chevron-right' /> Get next comments")
+                        .html("<span class='glyphicon glyphicon-chevron-down' />")
                         .addClass('btn btn-default down');
 
                     var goBack = function() {

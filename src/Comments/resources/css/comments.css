@@ -2,3 +2,11 @@
     width: 100%;
     height: auto;
 }
+div.handlebars-comments-container a.btn {
+    width:100%;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+div.handlebars-comments-container div.comments-container {
+    margin-top: -10px;
+}
