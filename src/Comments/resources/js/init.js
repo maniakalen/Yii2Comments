@@ -162,7 +162,11 @@ $(document).ready(function() {
                 yii.comments.data.unshift(data);
             }
             var items = yii.comments.data;
-            yii.comments.renderComments.bind(this,items).call();
+            var page = parseInt(container.data('commentsPage'));
+            if (isNaN(page)) {
+                page = 1;
+            }
+            yii.comments.renderComments.bind(this,items, page).call();
         }.bind(this));
         return false;
     });
