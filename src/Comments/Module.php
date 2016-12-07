@@ -56,6 +56,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
                 if ($component instanceof Component) {
                     if (is_array($config)) {
                         foreach ($config as $param => $values) {
+                            if (!$component->canGetProperty($param)) { continue; }
                             if (is_array($values)) {
                                 $component->$param = ArrayHelper::merge($component->$param, $values);
                             } else {
