@@ -20,3 +20,14 @@ Supported configuration params for sorting the results and for defining page siz
             ]
         ]
 </pre>
+
+In order to include this into your project you need to add this to your composer root branch
+
+"repositories": [
+    {
+      "url": "https://github.com/maniakalen/Yii2Comments.git",
+      "type": "git"
+    }
+  ]
+  
+  and "yii2/comments" : "*@dev" to the require part
