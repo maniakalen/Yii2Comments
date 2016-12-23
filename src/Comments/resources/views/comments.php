@@ -7,8 +7,14 @@
  * $LastChangedBy: - $
  * $Author: - $
  * ---------  End Version Control Data -----------------------------------------
+ *
+ * @param string $table
+ * @param string $content
+ * @param string $id
+ *
  */
 \Comments\Assets\CommentsAsset::register($this);
+if (!isset($content)) { $content = ''; }
 ?>
 <div class="col-md-8 step comments handlebars-comments-container" data-comments-table="<?=$table?>" data-comments-id="<?=$id?>">
     <div class="progress" style="margin-bottom:0;">
@@ -18,7 +24,7 @@
     </div>
 </div>
 <script id="handlebars-comments" type="text/x-handlebars-template">
-<?=$this->render('template', ['table' => $table, 'id' => $id])?>
+<?=$this->render('template', ['table' => $table, 'id' => $id, 'content' => $content])?>
 </script>
 <script id="handlebars-comments-form" type="text/x-handlebars-template">
     <?=$this->render('form')?>

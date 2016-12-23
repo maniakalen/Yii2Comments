@@ -10,11 +10,14 @@
  */
 ?>
 {{#each this}}
+<?php if (isset($content)): ?>
+<?php echo $content; ?>
+<?php else: ?>
 <div class="comment">
     <h4>{{this.author}}<span class="date">{{this.created_at}}</span></h4>
-    <div>
-        <img src="/img/quots.png" />
+    <div class="content">
         <p>{{this.text}}</p>
     </div>
 </div>
+<?php endif ?>
 {{/each}}
