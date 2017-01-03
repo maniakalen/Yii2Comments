@@ -14,7 +14,7 @@ class CommentsWidget extends \yii\base\Widget
     public $table;
     public $object_id;
 
-    protected static $content;
+    public $content;
 
     public static function begin($config = [])
     {
@@ -24,7 +24,10 @@ class CommentsWidget extends \yii\base\Widget
 
     public static function end()
     {
-        self::$content = ob_end_clean();
+        if (!empty(static::$stack)) {
+            $widget = end(static::$stack);
+            $widget->content = ob_end_clean();
+        }
         return parent::end();
     }
 
@@ -33,7 +36,7 @@ class CommentsWidget extends \yii\base\Widget
         return $this->render('@Comments/resources/views/comments',[
             'table' => $this->table,
             'id' => $this->object_id,
-            'content' => self::$content
+            'content' => $this->content
         ]);
     }
 }
